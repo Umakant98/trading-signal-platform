@@ -1,24 +1,46 @@
-// TypeScript type definitions for Signal, Candle, IndicatorValues
-
 export interface Signal {
-    timestamp: Date;
-    value: number;
-    color: 'Green' | 'Red' | 'Grey';
+  symbol: string;
+  timestamp: Date;
+  signal: 'BUY' | 'SELL' | 'NEUTRAL';
+  confidence: number;
+  indicators: {
+    ma9: number;
+    ma20: number;
+    ma50: number;
+    rsi: number;
+    macd: number;
+    macdSignal: number;
+    bollingerUpper: number;
+    bollingerLower: number;
+    volume: number;
+    volumeMA: number;
+  };
 }
 
 export interface Candle {
-    time: Date;
-    open: number;
-    high: number;
-    low: number;
-    close: number;
-    volume: number;
+  timestamp: Date;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+}
+
+export interface MarketDataResponse {
+  symbol: string;
+  candles: Candle[];
+  lastUpdate: Date;
 }
 
 export interface IndicatorValues {
-    ema: number;
-    rsi: number;
-    macd: number;
-    bollingerBands: { upper: number; lower: number; }
-    volumeMA: number;
+  ma9: number;
+  ma20: number;
+  ma50: number;
+  rsi: number;
+  macd: number;
+  macdSignal: number;
+  bollingerUpper: number;
+  bollingerMiddle: number;
+  bollingerLower: number;
+  volumeMA: number;
 }
